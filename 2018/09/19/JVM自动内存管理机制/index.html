@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="window,software,cmd," />
+  <meta name="keywords" content="内存区域,内存溢出," />
 
 
 
@@ -79,21 +79,20 @@
 
 
 
-<meta name="description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
-<meta name="keywords" content="window,software,cmd">
+<meta name="description" content="1.JVM运行时数据区域 1.1程序计数器程序计数器可看作当前线程所执行的字节码的行号指示器，其实就是告诉JVM执行到字节码文件哪一行了。多线程环境中，每次线程切换后都能恢复到正确的执行位置，靠的就是这个计数器，这也解释了为什么程序计数器必须是线程私有的。另外，它也是唯一一个不会发生内存溢出异常的区域。 1.2虚拟机栈就是为JVM执行java方法服务的。一个java方法执行的同时会创建一个栈帧用于">
+<meta name="keywords" content="内存区域,内存溢出">
 <meta property="og:type" content="article">
-<meta property="og:title" content="window软件命令行操作">
-<meta property="og:url" content="http://yoursite.com/2018/09/13/软件命令行操作/index.html">
+<meta property="og:title" content="JVM自动内存管理机制">
+<meta property="og:url" content="http://yoursite.com/2018/09/19/JVM自动内存管理机制/index.html">
 <meta property="og:site_name" content="Happy Egg">
-<meta property="og:description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
+<meta property="og:description" content="1.JVM运行时数据区域 1.1程序计数器程序计数器可看作当前线程所执行的字节码的行号指示器，其实就是告诉JVM执行到字节码文件哪一行了。多线程环境中，每次线程切换后都能恢复到正确的执行位置，靠的就是这个计数器，这也解释了为什么程序计数器必须是线程私有的。另外，它也是唯一一个不会发生内存溢出异常的区域。 1.2虚拟机栈就是为JVM执行java方法服务的。一个java方法执行的同时会创建一个栈帧用于">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/图片1.png">
-<meta property="og:image" content="http://yoursite.com/图片2.png">
-<meta property="og:updated_time" content="2018-09-14T02:25:21.166Z">
+<meta property="og:image" content="http://yoursite.com/JVM运行时数据区域.png">
+<meta property="og:updated_time" content="2018-09-19T14:41:00.293Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="window软件命令行操作">
-<meta name="twitter:description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
-<meta name="twitter:image" content="http://yoursite.com/图片1.png">
+<meta name="twitter:title" content="JVM自动内存管理机制">
+<meta name="twitter:description" content="1.JVM运行时数据区域 1.1程序计数器程序计数器可看作当前线程所执行的字节码的行号指示器，其实就是告诉JVM执行到字节码文件哪一行了。多线程环境中，每次线程切换后都能恢复到正确的执行位置，靠的就是这个计数器，这也解释了为什么程序计数器必须是线程私有的。另外，它也是唯一一个不会发生内存溢出异常的区域。 1.2虚拟机栈就是为JVM执行java方法服务的。一个java方法执行的同时会创建一个栈帧用于">
+<meta name="twitter:image" content="http://yoursite.com/JVM运行时数据区域.png">
 
 
 
@@ -123,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/13/软件命令行操作/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/19/JVM自动内存管理机制/"/>
 
 
 
 
 
-  <title>window软件命令行操作 | Happy Egg</title>
+  <title>JVM自动内存管理机制 | Happy Egg</title>
   
 
 
@@ -268,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/软件命令行操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/JVM自动内存管理机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="哈蛋炒饭">
@@ -285,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">window软件命令行操作</h1>
+          <h1 class="post-title" itemprop="name headline">JVM自动内存管理机制</h1>
         
 
         <div class="post-meta">
@@ -297,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T11:25:52+08:00">
-                2018-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T21:21:15+08:00">
+                2018-09-19
               </time>
             
 
@@ -320,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/window/" itemprop="url" rel="index">
-                    <span itemprop="name">window</span>
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
                   </a>
                 </span>
 
@@ -362,14 +361,19 @@
       
 
       
-        <h2 id="Redis-version-Redis-x64-3-2-100"><a href="#Redis-version-Redis-x64-3-2-100" class="headerlink" title="Redis(version : Redis-x64-3.2.100)"></a>Redis(version : Redis-x64-3.2.100)</h2><h3 id="1-cmd启动redis"><a href="#1-cmd启动redis" class="headerlink" title="1.cmd启动redis"></a>1.cmd启动redis</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server<span class="selector-class">.exe</span> redis<span class="selector-class">.windows</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure>
-<p><img src="/图片1.png" alt=""></p>
-<h2 id="Nginx-version-nginx-1-12-2"><a href="#Nginx-version-nginx-1-12-2" class="headerlink" title="Nginx(version : nginx-1.12.2)"></a>Nginx(version : nginx-1.12.2)</h2><h3 id="1-cmd启动nginx"><a href="#1-cmd启动nginx" class="headerlink" title="1.cmd启动nginx"></a>1.cmd启动nginx</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">start</span> nginx或者nginx.exe</span><br></pre></td></tr></table></figure>
-<h3 id="2-cmd关闭nginx"><a href="#2-cmd关闭nginx" class="headerlink" title="2.cmd关闭nginx"></a>2.cmd关闭nginx</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.exe</span> -s quit或者nginx<span class="selector-class">.exe</span> -s stop</span><br></pre></td></tr></table></figure>
-<h3 id="3-cmd重启nginx"><a href="#3-cmd重启nginx" class="headerlink" title="3.cmd重启nginx"></a>3.cmd重启nginx</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.exe</span> -s reload</span><br></pre></td></tr></table></figure>
-<h2 id="Solr-version-solr-7-4-0"><a href="#Solr-version-solr-7-4-0" class="headerlink" title="Solr(version : solr-7.4.0)"></a>Solr(version : solr-7.4.0)</h2><h3 id="1-cmd启动solr"><a href="#1-cmd启动solr" class="headerlink" title="1.cmd启动solr"></a>1.cmd启动solr</h3><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solr.<span class="built_in">cmd</span> <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
-<p><img src="/图片2.png" alt=""></p>
-<h3 id="2-cmd关闭solr"><a href="#2-cmd关闭solr" class="headerlink" title="2.cmd关闭solr"></a>2.cmd关闭solr</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solr<span class="selector-class">.cmd</span> stop</span><br></pre></td></tr></table></figure>
+        <h2 id="1-JVM运行时数据区域"><a href="#1-JVM运行时数据区域" class="headerlink" title="1.JVM运行时数据区域"></a>1.JVM运行时数据区域</h2><p><img src="/JVM运行时数据区域.png" alt="JVM运行时数据区域"></p>
+<h3 id="1-1程序计数器"><a href="#1-1程序计数器" class="headerlink" title="1.1程序计数器"></a>1.1程序计数器</h3><p>程序计数器可看作当前线程所执行的字节码的行号指示器，其实就是告诉JVM执行到字节码文件哪一行了。多线程环境中，每次线程切换后都能恢复到正确的执行位置，靠的就是这个计数器，这也解释了为什么程序计数器必须是线程私有的。另外，它也是唯一一个不会发生内存溢出异常的区域。</p>
+<h3 id="1-2虚拟机栈"><a href="#1-2虚拟机栈" class="headerlink" title="1.2虚拟机栈"></a>1.2虚拟机栈</h3><p>就是为JVM执行java方法服务的。一个java方法执行的同时会创建一个栈帧用于保存局部变量表、操作数栈、动态链接、方法出口等信息。一个java方法从调用到执行结束，就对应着一个栈帧在虚拟机栈中入栈到出栈的过程。另外，如果线程请求的栈深度大于JVM所允许的深度，就会报StackOverFlowError；如果JVM可以动态扩展，但扩展时却申请不到足够的内存，就会报OutOfMemoryError。</p>
+<h3 id="1-3本地方法栈"><a href="#1-3本地方法栈" class="headerlink" title="1.3本地方法栈"></a>1.3本地方法栈</h3><p>同虚拟机栈，区别就是本地方法栈为JVM执行native方法服务的。</p>
+<h3 id="1-4堆"><a href="#1-4堆" class="headerlink" title="1.4堆"></a>1.4堆</h3><p>就是用来存放对象实例的。java堆可以处于物理上不连续的内存空间，只要逻辑连续即可。另外，如果堆内存不足以完成实例分配，且无法扩展，就会报OutOfMemoryError。</p>
+<h3 id="1-5方法区"><a href="#1-5方法区" class="headerlink" title="1.5方法区"></a>1.5方法区</h3><p>存储JVM加载的类信息、常量、静态变量等数据。方法区无法满足内存分配需求时，会报OutOfMemoryError。</p>
+<h3 id="1-6运行时常量池"><a href="#1-6运行时常量池" class="headerlink" title="1.6运行时常量池"></a>1.6运行时常量池</h3><p>方法区的一部分。存放各种字面量和符号引用。常量池无法申请到内存时就会报OutOfMemoryError。</p>
+<h2 id="2-对象的创建"><a href="#2-对象的创建" class="headerlink" title="2.对象的创建"></a>2.对象的创建</h2><p>JVM执行到一条new指令时，</p>
+<p>s1：检查指令参数能否在常量池中找到一个类的符号引用，并检查这个符号引用代表的类是否已被JVM加载、解析和初始化过。如果没有，就先执行相应的类加载过程。</p>
+<p>s2：为新生对象分配内存。（有两种分配方式，指针碰撞和空闲列表。处理分配内存时可能出现的线程安全问题有两种方法，1.CAS+失败重试，2.本地线程分配缓冲。）</p>
+<p>s3：JVM将分配到的内存空间初始化为零值。</p>
+<p>s4：JVM设置对象（如这个对象是哪个类的实例）。</p>
+<p>s5：执行对象的\<init>方法。</init></p>
 
       
     </div>
@@ -396,11 +400,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/window/" rel="tag"># window</a>
+            <a href="/tags/内存区域/" rel="tag"># 内存区域</a>
           
-            <a href="/tags/software/" rel="tag"># software</a>
-          
-            <a href="/tags/cmd/" rel="tag"># cmd</a>
+            <a href="/tags/内存溢出/" rel="tag"># 内存溢出</a>
           
         </div>
       
@@ -413,15 +415,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/18/乐观锁和悲观锁/" rel="next" title="乐观锁和悲观锁">
+                <i class="fa fa-chevron-left"></i> 乐观锁和悲观锁
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/15/csg-project/" rel="prev" title="智能仓库后台管理系统">
-                智能仓库后台管理系统 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +585,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-version-Redis-x64-3-2-100"><span class="nav-number">1.</span> <span class="nav-text">Redis(version : Redis-x64-3.2.100)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动redis"><span class="nav-number">1.1.</span> <span class="nav-text">1.cmd启动redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-version-nginx-1-12-2"><span class="nav-number">2.</span> <span class="nav-text">Nginx(version : nginx-1.12.2)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动nginx"><span class="nav-number">2.1.</span> <span class="nav-text">1.cmd启动nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-cmd关闭nginx"><span class="nav-number">2.2.</span> <span class="nav-text">2.cmd关闭nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-cmd重启nginx"><span class="nav-number">2.3.</span> <span class="nav-text">3.cmd重启nginx</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solr-version-solr-7-4-0"><span class="nav-number">3.</span> <span class="nav-text">Solr(version : solr-7.4.0)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动solr"><span class="nav-number">3.1.</span> <span class="nav-text">1.cmd启动solr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-cmd关闭solr"><span class="nav-number">3.2.</span> <span class="nav-text">2.cmd关闭solr</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-JVM运行时数据区域"><span class="nav-number">1.</span> <span class="nav-text">1.JVM运行时数据区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">1.1程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">1.2虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">1.3本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4堆"><span class="nav-number">1.4.</span> <span class="nav-text">1.4堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5方法区"><span class="nav-number">1.5.</span> <span class="nav-text">1.5方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6运行时常量池"><span class="nav-number">1.6.</span> <span class="nav-text">1.6运行时常量池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-对象的创建"><span class="nav-number">2.</span> <span class="nav-text">2.对象的创建</span></a></li></ol></div>
             
 
           </div>
