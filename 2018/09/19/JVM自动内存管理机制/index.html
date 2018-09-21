@@ -88,7 +88,9 @@
 <meta property="og:description" content="1.JVM运行时数据区域 1.1程序计数器程序计数器可看作当前线程所执行的字节码的行号指示器，其实就是告诉JVM执行到字节码文件哪一行了。多线程环境中，每次线程切换后都能恢复到正确的执行位置，靠的就是这个计数器，这也解释了为什么程序计数器必须是线程私有的。另外，它也是唯一一个不会发生内存溢出异常的区域。 1.2虚拟机栈就是为JVM执行java方法服务的。一个java方法执行的同时会创建一个栈帧用于">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/JVM运行时数据区域.png">
-<meta property="og:updated_time" content="2018-09-19T14:41:00.293Z">
+<meta property="og:image" content="http://yoursite.com/句柄访问对象.jpg">
+<meta property="og:image" content="http://yoursite.com/直接指针访问对象.jpg">
+<meta property="og:updated_time" content="2018-09-20T04:54:18.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM自动内存管理机制">
 <meta name="twitter:description" content="1.JVM运行时数据区域 1.1程序计数器程序计数器可看作当前线程所执行的字节码的行号指示器，其实就是告诉JVM执行到字节码文件哪一行了。多线程环境中，每次线程切换后都能恢复到正确的执行位置，靠的就是这个计数器，这也解释了为什么程序计数器必须是线程私有的。另外，它也是唯一一个不会发生内存溢出异常的区域。 1.2虚拟机栈就是为JVM执行java方法服务的。一个java方法执行的同时会创建一个栈帧用于">
@@ -373,7 +375,16 @@
 <p>s2：为新生对象分配内存。（有两种分配方式，指针碰撞和空闲列表。处理分配内存时可能出现的线程安全问题有两种方法，1.CAS+失败重试，2.本地线程分配缓冲。）</p>
 <p>s3：JVM将分配到的内存空间初始化为零值。</p>
 <p>s4：JVM设置对象（如这个对象是哪个类的实例）。</p>
-<p>s5：执行对象的\<init>方法。</init></p>
+<p>s5：把对象按照程序员的意愿进行初始化。</p>
+<h2 id="3-对象的内存布局"><a href="#3-对象的内存布局" class="headerlink" title="3.对象的内存布局"></a>3.对象的内存布局</h2><p>可分为三块区域：对象头（header）、实例数据（Instance Data）、对齐填充（Padding）。</p>
+<h3 id="3-1对象头"><a href="#3-1对象头" class="headerlink" title="3.1对象头"></a>3.1对象头</h3><p>包含两部分信息。第一部分用于存储对象自身的运行时数据，如哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID等；第二部分是类型指针，JVM就是通过这个指针确定这个对象是哪个类的实例。</p>
+<h3 id="3-2实例数据"><a href="#3-2实例数据" class="headerlink" title="3.2实例数据"></a>3.2实例数据</h3><p>就是代码中定义的各种类型的字段内容。</p>
+<h3 id="3-3对齐填充"><a href="#3-3对齐填充" class="headerlink" title="3.3对齐填充"></a>3.3对齐填充</h3><p>JVM自动内存管理机制要求对象大小必须是8字节的整数倍，而对象头正好是8字节的整数倍，所以实例数据也必须是8字节整数倍，如果不是，就要对齐填充。</p>
+<h2 id="4-对象的访问方式"><a href="#4-对象的访问方式" class="headerlink" title="4.对象的访问方式"></a>4.对象的访问方式</h2><p>两种主流访问方式：句柄和直接指针。</p>
+<p><img src="/句柄访问对象.jpg" alt="句柄访问对象"></p>
+<p><img src="/直接指针访问对象.jpg" alt="直接指针访问对象"></p>
+<p>句柄访问最大优势就是reference中存储的是稳定的句柄地址，当对象移动时只需改变句柄中的实例数据指针，而reference本身不需要修改；</p>
+<p>直接指针访问最大优势就是节省了一次指针定位的时间开销。</p>
 
       
     </div>
@@ -424,6 +435,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/20/垃圾收集器/" rel="prev" title="垃圾收集">
+                垃圾收集 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -530,7 +545,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -552,7 +567,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -585,7 +600,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-JVM运行时数据区域"><span class="nav-number">1.</span> <span class="nav-text">1.JVM运行时数据区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">1.1程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">1.2虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">1.3本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4堆"><span class="nav-number">1.4.</span> <span class="nav-text">1.4堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5方法区"><span class="nav-number">1.5.</span> <span class="nav-text">1.5方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6运行时常量池"><span class="nav-number">1.6.</span> <span class="nav-text">1.6运行时常量池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-对象的创建"><span class="nav-number">2.</span> <span class="nav-text">2.对象的创建</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-JVM运行时数据区域"><span class="nav-number">1.</span> <span class="nav-text">1.JVM运行时数据区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1程序计数器"><span class="nav-number">1.1.</span> <span class="nav-text">1.1程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2虚拟机栈"><span class="nav-number">1.2.</span> <span class="nav-text">1.2虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3本地方法栈"><span class="nav-number">1.3.</span> <span class="nav-text">1.3本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4堆"><span class="nav-number">1.4.</span> <span class="nav-text">1.4堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5方法区"><span class="nav-number">1.5.</span> <span class="nav-text">1.5方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6运行时常量池"><span class="nav-number">1.6.</span> <span class="nav-text">1.6运行时常量池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-对象的创建"><span class="nav-number">2.</span> <span class="nav-text">2.对象的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-对象的内存布局"><span class="nav-number">3.</span> <span class="nav-text">3.对象的内存布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1对象头"><span class="nav-number">3.1.</span> <span class="nav-text">3.1对象头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2实例数据"><span class="nav-number">3.2.</span> <span class="nav-text">3.2实例数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3对齐填充"><span class="nav-number">3.3.</span> <span class="nav-text">3.3对齐填充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-对象的访问方式"><span class="nav-number">4.</span> <span class="nav-text">4.对象的访问方式</span></a></li></ol></div>
             
 
           </div>
@@ -621,7 +636,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.7k字</span>
+  <span class="post-count">博客全站共12.2k字</span>
 </div>
 
 

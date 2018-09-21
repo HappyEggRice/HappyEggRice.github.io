@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="window,software,cmd," />
+  <meta name="keywords" content="垃圾收集算法," />
 
 
 
@@ -79,21 +79,22 @@
 
 
 
-<meta name="description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
-<meta name="keywords" content="window,software,cmd">
+<meta name="description" content="1.概述垃圾收集针对的就是java堆和方法区。程序计数器、栈的内存分配和回收都具备确定性的，内存随着方法结束或线程结束而回收，就不用再考虑回收的问题了。而java堆和方法区不一样，例如一个接口的多个实现类需要的内存可能不一样，也就是说我们只有在程序运行时才知道创建哪些对象，所以这部分内存分配和回收都是动态不确定的，就需要我们去考虑回收的问题。 2.判断对象是否存活主要有两种方式：引用计数法和可达性">
+<meta name="keywords" content="垃圾收集算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="window软件命令行操作">
-<meta property="og:url" content="http://yoursite.com/2018/09/13/软件命令行操作/index.html">
+<meta property="og:title" content="垃圾收集">
+<meta property="og:url" content="http://yoursite.com/2018/09/20/垃圾收集器/index.html">
 <meta property="og:site_name" content="Happy Egg">
-<meta property="og:description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
+<meta property="og:description" content="1.概述垃圾收集针对的就是java堆和方法区。程序计数器、栈的内存分配和回收都具备确定性的，内存随着方法结束或线程结束而回收，就不用再考虑回收的问题了。而java堆和方法区不一样，例如一个接口的多个实现类需要的内存可能不一样，也就是说我们只有在程序运行时才知道创建哪些对象，所以这部分内存分配和回收都是动态不确定的，就需要我们去考虑回收的问题。 2.判断对象是否存活主要有两种方式：引用计数法和可达性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/图片1.png">
-<meta property="og:image" content="http://yoursite.com/图片2.png">
-<meta property="og:updated_time" content="2018-09-14T02:25:21.166Z">
+<meta property="og:image" content="http://yoursite.com/标记清除.jpg">
+<meta property="og:image" content="http://yoursite.com/复制.jpg">
+<meta property="og:image" content="http://yoursite.com/标记整理.jpg">
+<meta property="og:updated_time" content="2018-09-21T01:02:14.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="window软件命令行操作">
-<meta name="twitter:description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
-<meta name="twitter:image" content="http://yoursite.com/图片1.png">
+<meta name="twitter:title" content="垃圾收集">
+<meta name="twitter:description" content="1.概述垃圾收集针对的就是java堆和方法区。程序计数器、栈的内存分配和回收都具备确定性的，内存随着方法结束或线程结束而回收，就不用再考虑回收的问题了。而java堆和方法区不一样，例如一个接口的多个实现类需要的内存可能不一样，也就是说我们只有在程序运行时才知道创建哪些对象，所以这部分内存分配和回收都是动态不确定的，就需要我们去考虑回收的问题。 2.判断对象是否存活主要有两种方式：引用计数法和可达性">
+<meta name="twitter:image" content="http://yoursite.com/标记清除.jpg">
 
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/13/软件命令行操作/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/20/垃圾收集器/"/>
 
 
 
 
 
-  <title>window软件命令行操作 | Happy Egg</title>
+  <title>垃圾收集 | Happy Egg</title>
   
 
 
@@ -268,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/软件命令行操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/垃圾收集器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="哈蛋炒饭">
@@ -285,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">window软件命令行操作</h1>
+          <h1 class="post-title" itemprop="name headline">垃圾收集</h1>
         
 
         <div class="post-meta">
@@ -297,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T11:25:52+08:00">
-                2018-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-20T13:00:20+08:00">
+                2018-09-20
               </time>
             
 
@@ -320,8 +321,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/window/" itemprop="url" rel="index">
-                    <span itemprop="name">window</span>
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
                   </a>
                 </span>
 
@@ -362,14 +363,23 @@
       
 
       
-        <h2 id="Redis-version-Redis-x64-3-2-100"><a href="#Redis-version-Redis-x64-3-2-100" class="headerlink" title="Redis(version : Redis-x64-3.2.100)"></a>Redis(version : Redis-x64-3.2.100)</h2><h3 id="1-cmd启动redis"><a href="#1-cmd启动redis" class="headerlink" title="1.cmd启动redis"></a>1.cmd启动redis</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server<span class="selector-class">.exe</span> redis<span class="selector-class">.windows</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure>
-<p><img src="/图片1.png" alt=""></p>
-<h2 id="Nginx-version-nginx-1-12-2"><a href="#Nginx-version-nginx-1-12-2" class="headerlink" title="Nginx(version : nginx-1.12.2)"></a>Nginx(version : nginx-1.12.2)</h2><h3 id="1-cmd启动nginx"><a href="#1-cmd启动nginx" class="headerlink" title="1.cmd启动nginx"></a>1.cmd启动nginx</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">start</span> nginx或者nginx.exe</span><br></pre></td></tr></table></figure>
-<h3 id="2-cmd关闭nginx"><a href="#2-cmd关闭nginx" class="headerlink" title="2.cmd关闭nginx"></a>2.cmd关闭nginx</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.exe</span> -s quit或者nginx<span class="selector-class">.exe</span> -s stop</span><br></pre></td></tr></table></figure>
-<h3 id="3-cmd重启nginx"><a href="#3-cmd重启nginx" class="headerlink" title="3.cmd重启nginx"></a>3.cmd重启nginx</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.exe</span> -s reload</span><br></pre></td></tr></table></figure>
-<h2 id="Solr-version-solr-7-4-0"><a href="#Solr-version-solr-7-4-0" class="headerlink" title="Solr(version : solr-7.4.0)"></a>Solr(version : solr-7.4.0)</h2><h3 id="1-cmd启动solr"><a href="#1-cmd启动solr" class="headerlink" title="1.cmd启动solr"></a>1.cmd启动solr</h3><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solr.<span class="built_in">cmd</span> <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
-<p><img src="/图片2.png" alt=""></p>
-<h3 id="2-cmd关闭solr"><a href="#2-cmd关闭solr" class="headerlink" title="2.cmd关闭solr"></a>2.cmd关闭solr</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solr<span class="selector-class">.cmd</span> stop</span><br></pre></td></tr></table></figure>
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>垃圾收集针对的就是java堆和方法区。程序计数器、栈的内存分配和回收都具备确定性的，内存随着方法结束或线程结束而回收，就不用再考虑回收的问题了。而java堆和方法区不一样，例如一个接口的多个实现类需要的内存可能不一样，也就是说我们只有在程序运行时才知道创建哪些对象，所以这部分内存分配和回收都是动态不确定的，就需要我们去考虑回收的问题。</p>
+<h2 id="2-判断对象是否存活"><a href="#2-判断对象是否存活" class="headerlink" title="2.判断对象是否存活"></a>2.判断对象是否存活</h2><p>主要有两种方式：引用计数法和可达性分析算法</p>
+<h3 id="2-1引用计算法"><a href="#2-1引用计算法" class="headerlink" title="2.1引用计算法"></a>2.1引用计算法</h3><p>原理：给对象中添加一个引用计数器，每当一个地方引用它，计数器就加1；有一个引用失效，就减1；任何时刻只要计数器值为0就判定对象死亡。</p>
+<p>弊端：解决不了对象间相互循环引用的问题。</p>
+<h3 id="2-1可达性分析算法"><a href="#2-1可达性分析算法" class="headerlink" title="2.1可达性分析算法"></a>2.1可达性分析算法</h3><p>原理：通过一系列称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连时，就说明该对象不可用。</p>
+<h2 id="3-垃圾收集算法"><a href="#3-垃圾收集算法" class="headerlink" title="3.垃圾收集算法"></a>3.垃圾收集算法</h2><h3 id="3-1标记-清除算法"><a href="#3-1标记-清除算法" class="headerlink" title="3.1标记-清除算法"></a>3.1标记-清除算法</h3><p>原理：先标记，再清除。</p>
+<p>不足：一个是效率问题，标记和清除的效率都很低；一个是空间问题，内存零散化严重。</p>
+<p><img src="/标记清除.jpg" alt="标记清除"></p>
+<h3 id="3-2复制算法"><a href="#3-2复制算法" class="headerlink" title="3.2复制算法"></a>3.2复制算法</h3><p>原理：将可用内存按容量分成大小相等的两块，每次只使用其中一块，当这块内存使用完，就将还存活的对象复制到另一块内存，再把使用过的内存一次清理掉。</p>
+<p>优点：效率高，不会产生内存碎片。</p>
+<p>缺点：将内存压缩为原来的一半。</p>
+<p><img src="/复制.jpg" alt="复制"></p>
+<h3 id="3-3标记-整理算法"><a href="#3-3标记-整理算法" class="headerlink" title="3.3标记-整理算法"></a>3.3标记-整理算法</h3><p>原理：先标记，然后让所有存活对象都向一端移动，最后清理掉端边界以外的内存。</p>
+<p>优点：解决了复制算法在对象存活率较高时要多次复制所造成的效率降低的问题，也不需要额外的空间进行分配担保。</p>
+<p><img src="/标记整理.jpg" alt="标记整理"></p>
+<h3 id="3-4分代收集算法"><a href="#3-4分代收集算法" class="headerlink" title="3.4分代收集算法"></a>3.4分代收集算法</h3><p>根据对象存活周期划分内存。一般把java堆分为新生代和老年代，再根据各年代的特点采取不同的回收算法，如新生代存活率低，可用复制算法；老年代存活率高，可用标记清除或标记整理。</p>
+<h2 id="4-内存分配"><a href="#4-内存分配" class="headerlink" title="4.内存分配"></a>4.内存分配</h2><p>大多数情况，对象在新生代Eden区分配。当Eden区没有足够内存进行分配时，只要老年代的连续空间大于新生代对象总大小或历代晋升的平均大小，就进行一次Minor GC（发生在新生代的GC），否则将执行一次Full GC（发生在老年代的GC）；大对象一般指那种很长的字符串以及数组，会直接进入老年代；长期存活对象将进入老年代。</p>
 
       
     </div>
@@ -396,11 +406,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/window/" rel="tag"># window</a>
-          
-            <a href="/tags/software/" rel="tag"># software</a>
-          
-            <a href="/tags/cmd/" rel="tag"># cmd</a>
+            <a href="/tags/垃圾收集算法/" rel="tag"># 垃圾收集算法</a>
           
         </div>
       
@@ -413,14 +419,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/19/JVM自动内存管理机制/" rel="next" title="JVM自动内存管理机制">
+                <i class="fa fa-chevron-left"></i> JVM自动内存管理机制
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/15/csg-project/" rel="prev" title="智能仓库后台管理系统">
-                智能仓库后台管理系统 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/21/类文件结构/" rel="prev" title="类文件结构">
+                类文件结构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -583,7 +593,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-version-Redis-x64-3-2-100"><span class="nav-number">1.</span> <span class="nav-text">Redis(version : Redis-x64-3.2.100)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动redis"><span class="nav-number">1.1.</span> <span class="nav-text">1.cmd启动redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-version-nginx-1-12-2"><span class="nav-number">2.</span> <span class="nav-text">Nginx(version : nginx-1.12.2)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动nginx"><span class="nav-number">2.1.</span> <span class="nav-text">1.cmd启动nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-cmd关闭nginx"><span class="nav-number">2.2.</span> <span class="nav-text">2.cmd关闭nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-cmd重启nginx"><span class="nav-number">2.3.</span> <span class="nav-text">3.cmd重启nginx</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solr-version-solr-7-4-0"><span class="nav-number">3.</span> <span class="nav-text">Solr(version : solr-7.4.0)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动solr"><span class="nav-number">3.1.</span> <span class="nav-text">1.cmd启动solr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-cmd关闭solr"><span class="nav-number">3.2.</span> <span class="nav-text">2.cmd关闭solr</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1.概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-判断对象是否存活"><span class="nav-number">2.</span> <span class="nav-text">2.判断对象是否存活</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1引用计算法"><span class="nav-number">2.1.</span> <span class="nav-text">2.1引用计算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1可达性分析算法"><span class="nav-number">2.2.</span> <span class="nav-text">2.1可达性分析算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-垃圾收集算法"><span class="nav-number">3.</span> <span class="nav-text">3.垃圾收集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1标记-清除算法"><span class="nav-number">3.1.</span> <span class="nav-text">3.1标记-清除算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2复制算法"><span class="nav-number">3.2.</span> <span class="nav-text">3.2复制算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3标记-整理算法"><span class="nav-number">3.3.</span> <span class="nav-text">3.3标记-整理算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4分代收集算法"><span class="nav-number">3.4.</span> <span class="nav-text">3.4分代收集算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-内存分配"><span class="nav-number">4.</span> <span class="nav-text">4.内存分配</span></a></li></ol></div>
             
 
           </div>

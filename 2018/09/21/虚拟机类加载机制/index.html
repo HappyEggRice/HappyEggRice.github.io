@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="window,software,cmd," />
+  <meta name="keywords" content="类加载," />
 
 
 
@@ -79,21 +79,20 @@
 
 
 
-<meta name="description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
-<meta name="keywords" content="window,software,cmd">
+<meta name="description" content="1.类的生命周期">
+<meta name="keywords" content="类加载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="window软件命令行操作">
-<meta property="og:url" content="http://yoursite.com/2018/09/13/软件命令行操作/index.html">
+<meta property="og:title" content="虚拟机类加载机制">
+<meta property="og:url" content="http://yoursite.com/2018/09/21/虚拟机类加载机制/index.html">
 <meta property="og:site_name" content="Happy Egg">
-<meta property="og:description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
+<meta property="og:description" content="1.类的生命周期">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/图片1.png">
-<meta property="og:image" content="http://yoursite.com/图片2.png">
-<meta property="og:updated_time" content="2018-09-14T02:25:21.166Z">
+<meta property="og:image" content="http://yoursite.com/img/类的生命周期.jpg">
+<meta property="og:updated_time" content="2018-09-21T07:51:51.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="window软件命令行操作">
-<meta name="twitter:description" content="Redis(version : Redis-x64-3.2.100)1.cmd启动redis1redis-server.exe redis.windows.conf  Nginx(version : nginx-1.12.2)1.cmd启动nginx1start nginx或者nginx.exe 2.cmd关闭nginx1nginx.exe -s quit或者nginx.exe -s stop 3">
-<meta name="twitter:image" content="http://yoursite.com/图片1.png">
+<meta name="twitter:title" content="虚拟机类加载机制">
+<meta name="twitter:description" content="1.类的生命周期">
+<meta name="twitter:image" content="http://yoursite.com/img/类的生命周期.jpg">
 
 
 
@@ -123,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/13/软件命令行操作/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/21/虚拟机类加载机制/"/>
 
 
 
 
 
-  <title>window软件命令行操作 | Happy Egg</title>
+  <title>虚拟机类加载机制 | Happy Egg</title>
   
 
 
@@ -268,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/软件命令行操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/虚拟机类加载机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="哈蛋炒饭">
@@ -285,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">window软件命令行操作</h1>
+          <h1 class="post-title" itemprop="name headline">虚拟机类加载机制</h1>
         
 
         <div class="post-meta">
@@ -297,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-13T11:25:52+08:00">
-                2018-09-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T15:41:43+08:00">
+                2018-09-21
               </time>
             
 
@@ -320,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/window/" itemprop="url" rel="index">
-                    <span itemprop="name">window</span>
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
                   </a>
                 </span>
 
@@ -362,14 +361,7 @@
       
 
       
-        <h2 id="Redis-version-Redis-x64-3-2-100"><a href="#Redis-version-Redis-x64-3-2-100" class="headerlink" title="Redis(version : Redis-x64-3.2.100)"></a>Redis(version : Redis-x64-3.2.100)</h2><h3 id="1-cmd启动redis"><a href="#1-cmd启动redis" class="headerlink" title="1.cmd启动redis"></a>1.cmd启动redis</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server<span class="selector-class">.exe</span> redis<span class="selector-class">.windows</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure>
-<p><img src="/图片1.png" alt=""></p>
-<h2 id="Nginx-version-nginx-1-12-2"><a href="#Nginx-version-nginx-1-12-2" class="headerlink" title="Nginx(version : nginx-1.12.2)"></a>Nginx(version : nginx-1.12.2)</h2><h3 id="1-cmd启动nginx"><a href="#1-cmd启动nginx" class="headerlink" title="1.cmd启动nginx"></a>1.cmd启动nginx</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">start</span> nginx或者nginx.exe</span><br></pre></td></tr></table></figure>
-<h3 id="2-cmd关闭nginx"><a href="#2-cmd关闭nginx" class="headerlink" title="2.cmd关闭nginx"></a>2.cmd关闭nginx</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.exe</span> -s quit或者nginx<span class="selector-class">.exe</span> -s stop</span><br></pre></td></tr></table></figure>
-<h3 id="3-cmd重启nginx"><a href="#3-cmd重启nginx" class="headerlink" title="3.cmd重启nginx"></a>3.cmd重启nginx</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.exe</span> -s reload</span><br></pre></td></tr></table></figure>
-<h2 id="Solr-version-solr-7-4-0"><a href="#Solr-version-solr-7-4-0" class="headerlink" title="Solr(version : solr-7.4.0)"></a>Solr(version : solr-7.4.0)</h2><h3 id="1-cmd启动solr"><a href="#1-cmd启动solr" class="headerlink" title="1.cmd启动solr"></a>1.cmd启动solr</h3><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solr.<span class="built_in">cmd</span> <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
-<p><img src="/图片2.png" alt=""></p>
-<h3 id="2-cmd关闭solr"><a href="#2-cmd关闭solr" class="headerlink" title="2.cmd关闭solr"></a>2.cmd关闭solr</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solr<span class="selector-class">.cmd</span> stop</span><br></pre></td></tr></table></figure>
+        <h2 id="1-类的生命周期"><a href="#1-类的生命周期" class="headerlink" title="1.类的生命周期"></a>1.类的生命周期</h2><p><img src="/img/类的生命周期.jpg" alt="类的生命周期"></p>
 
       
     </div>
@@ -396,11 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/window/" rel="tag"># window</a>
-          
-            <a href="/tags/software/" rel="tag"># software</a>
-          
-            <a href="/tags/cmd/" rel="tag"># cmd</a>
+            <a href="/tags/类加载/" rel="tag"># 类加载</a>
           
         </div>
       
@@ -413,15 +401,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/21/类文件结构/" rel="next" title="类文件结构">
+                <i class="fa fa-chevron-left"></i> 类文件结构
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/15/csg-project/" rel="prev" title="智能仓库后台管理系统">
-                智能仓库后台管理系统 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +571,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-version-Redis-x64-3-2-100"><span class="nav-number">1.</span> <span class="nav-text">Redis(version : Redis-x64-3.2.100)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动redis"><span class="nav-number">1.1.</span> <span class="nav-text">1.cmd启动redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-version-nginx-1-12-2"><span class="nav-number">2.</span> <span class="nav-text">Nginx(version : nginx-1.12.2)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动nginx"><span class="nav-number">2.1.</span> <span class="nav-text">1.cmd启动nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-cmd关闭nginx"><span class="nav-number">2.2.</span> <span class="nav-text">2.cmd关闭nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-cmd重启nginx"><span class="nav-number">2.3.</span> <span class="nav-text">3.cmd重启nginx</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solr-version-solr-7-4-0"><span class="nav-number">3.</span> <span class="nav-text">Solr(version : solr-7.4.0)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cmd启动solr"><span class="nav-number">3.1.</span> <span class="nav-text">1.cmd启动solr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-cmd关闭solr"><span class="nav-number">3.2.</span> <span class="nav-text">2.cmd关闭solr</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-类的生命周期"><span class="nav-number">1.</span> <span class="nav-text">1.类的生命周期</span></a></li></ol></div>
             
 
           </div>

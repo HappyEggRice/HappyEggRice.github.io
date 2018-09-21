@@ -264,6 +264,461 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/虚拟机类加载机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="哈蛋炒饭">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/resume.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Happy Egg">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/21/虚拟机类加载机制/" itemprop="url">虚拟机类加载机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T15:41:43+08:00">
+                2018-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-类的生命周期"><a href="#1-类的生命周期" class="headerlink" title="1.类的生命周期"></a>1.类的生命周期</h2><p><img src="/img/类的生命周期.jpg" alt="类的生命周期"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+	
+	
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/21/类文件结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="哈蛋炒饭">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/resume.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Happy Egg">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/21/类文件结构/" itemprop="url">类文件结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-21T13:57:44+08:00">
+                2018-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-魔数和Class文件版本"><a href="#1-魔数和Class文件版本" class="headerlink" title="1.魔数和Class文件版本"></a>1.魔数和Class文件版本</h2><p>每个class文件前四个字节称为魔数，就是用来确定该文件是否能被虚拟机所接受的class文件。</p>
+<p>第5和第6个字节表示次版本号，第7和第8字节表示主版本号。</p>
+<h2 id="2-常量池"><a href="#2-常量池" class="headerlink" title="2.常量池"></a>2.常量池</h2><p>紧接着主次版本号之后的就是常量池入口，可理解为class文件的资源库。主要用来存放两类常量：字面量和符号引用。字面量比较接近java语言层面的常量概念，如文本字符串、final修饰的常量等。而符号引用属于编译原理方面的概念，主要包括三类常量：类和接口的全限定名、字段的名称和描述符、方法的名称和描述符。</p>
+<h2 id="3-访问标志"><a href="#3-访问标志" class="headerlink" title="3.访问标志"></a>3.访问标志</h2><p>常量池之后的两个字节代表访问标志，用于识别一些类或接口层次的访问信息，包括：这个Class是类还是接口；是否定义为public类型；是否定义为abstract类型；如果是类，有没有被final修饰等。</p>
+<h2 id="4-类索引、父类索引和接口索引集合"><a href="#4-类索引、父类索引和接口索引集合" class="headerlink" title="4.类索引、父类索引和接口索引集合"></a>4.类索引、父类索引和接口索引集合</h2><p>访问标志之后就是类索引、父类索引和接口索引集合。类索引用于确定这个类的全限定名，父类索引用于确定这个类的父类的全限定名，接口索引集合用于描述这个类实现哪些接口。</p>
+<h2 id="5-字段表集合"><a href="#5-字段表集合" class="headerlink" title="5.字段表集合"></a>5.字段表集合</h2><p>描述接口或类中声明的变量。</p>
+<h2 id="6-方法表集合"><a href="#6-方法表集合" class="headerlink" title="6.方法表集合"></a>6.方法表集合</h2><p>描述接口或类中声明的方法。</p>
+<h2 id="7-属性表集合"><a href="#7-属性表集合" class="headerlink" title="7.属性表集合"></a>7.属性表集合</h2><p>描述某些场景专有的信息。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+	
+	
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/垃圾收集器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="哈蛋炒饭">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/resume.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Happy Egg">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/20/垃圾收集器/" itemprop="url">垃圾收集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-20T13:00:20+08:00">
+                2018-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><p>垃圾收集针对的就是java堆和方法区。程序计数器、栈的内存分配和回收都具备确定性的，内存随着方法结束或线程结束而回收，就不用再考虑回收的问题了。而java堆和方法区不一样，例如一个接口的多个实现类需要的内存可能不一样，也就是说我们只有在程序运行时才知道创建哪些对象，所以这部分内存分配和回收都是动态不确定的，就需要我们去考虑回收的问题。</p>
+<h2 id="2-判断对象是否存活"><a href="#2-判断对象是否存活" class="headerlink" title="2.判断对象是否存活"></a>2.判断对象是否存活</h2><p>主要有两种方式：引用计数法和可达性分析算法</p>
+<h3 id="2-1引用计算法"><a href="#2-1引用计算法" class="headerlink" title="2.1引用计算法"></a>2.1引用计算法</h3><p>原理：给对象中添加一个引用计数器，每当一个地方引用它，计数器就加1；有一个引用失效，就减1；任何时刻只要计数器值为0就判定对象死亡。</p>
+<p>弊端：解决不了对象间相互循环引用的问题。</p>
+<h3 id="2-1可达性分析算法"><a href="#2-1可达性分析算法" class="headerlink" title="2.1可达性分析算法"></a>2.1可达性分析算法</h3><p>原理：通过一系列称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连时，就说明该对象不可用。</p>
+<h2 id="3-垃圾收集算法"><a href="#3-垃圾收集算法" class="headerlink" title="3.垃圾收集算法"></a>3.垃圾收集算法</h2><h3 id="3-1标记-清除算法"><a href="#3-1标记-清除算法" class="headerlink" title="3.1标记-清除算法"></a>3.1标记-清除算法</h3><p>原理：先标记，再清除。</p>
+<p>不足：一个是效率问题，标记和清除的效率都很低；一个是空间问题，内存零散化严重。</p>
+<p><img src="/标记清除.jpg" alt="标记清除"></p>
+<h3 id="3-2复制算法"><a href="#3-2复制算法" class="headerlink" title="3.2复制算法"></a>3.2复制算法</h3><p>原理：将可用内存按容量分成大小相等的两块，每次只使用其中一块，当这块内存使用完，就将还存活的对象复制到另一块内存，再把使用过的内存一次清理掉。</p>
+<p>优点：效率高，不会产生内存碎片。</p>
+<p>缺点：将内存压缩为原来的一半。</p>
+<p><img src="/复制.jpg" alt="复制"></p>
+<h3 id="3-3标记-整理算法"><a href="#3-3标记-整理算法" class="headerlink" title="3.3标记-整理算法"></a>3.3标记-整理算法</h3><p>原理：先标记，然后让所有存活对象都向一端移动，最后清理掉端边界以外的内存。</p>
+<p>优点：解决了复制算法在对象存活率较高时要多次复制所造成的效率降低的问题，也不需要额外的空间进行分配担保。</p>
+<p><img src="/标记整理.jpg" alt="标记整理"></p>
+<h3 id="3-4分代收集算法"><a href="#3-4分代收集算法" class="headerlink" title="3.4分代收集算法"></a>3.4分代收集算法</h3><p>根据对象存活周期划分内存。一般把java堆分为新生代和老年代，再根据各年代的特点采取不同的回收算法，如新生代存活率低，可用复制算法；老年代存活率高，可用标记清除或标记整理。</p>
+<h2 id="4-内存分配"><a href="#4-内存分配" class="headerlink" title="4.内存分配"></a>4.内存分配</h2><p>大多数情况，对象在新生代Eden区分配。当Eden区没有足够内存进行分配时，只要老年代的连续空间大于新生代对象总大小或历代晋升的平均大小，就进行一次Minor GC（发生在新生代的GC），否则将执行一次Full GC（发生在老年代的GC）；大对象一般指那种很长的字符串以及数组，会直接进入老年代；长期存活对象将进入老年代。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+	
+	
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/19/JVM自动内存管理机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -369,7 +824,16 @@
 <p>s2：为新生对象分配内存。（有两种分配方式，指针碰撞和空闲列表。处理分配内存时可能出现的线程安全问题有两种方法，1.CAS+失败重试，2.本地线程分配缓冲。）</p>
 <p>s3：JVM将分配到的内存空间初始化为零值。</p>
 <p>s4：JVM设置对象（如这个对象是哪个类的实例）。</p>
-<p>s5：执行对象的\<init>方法。</init></p>
+<p>s5：把对象按照程序员的意愿进行初始化。</p>
+<h2 id="3-对象的内存布局"><a href="#3-对象的内存布局" class="headerlink" title="3.对象的内存布局"></a>3.对象的内存布局</h2><p>可分为三块区域：对象头（header）、实例数据（Instance Data）、对齐填充（Padding）。</p>
+<h3 id="3-1对象头"><a href="#3-1对象头" class="headerlink" title="3.1对象头"></a>3.1对象头</h3><p>包含两部分信息。第一部分用于存储对象自身的运行时数据，如哈希码、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID等；第二部分是类型指针，JVM就是通过这个指针确定这个对象是哪个类的实例。</p>
+<h3 id="3-2实例数据"><a href="#3-2实例数据" class="headerlink" title="3.2实例数据"></a>3.2实例数据</h3><p>就是代码中定义的各种类型的字段内容。</p>
+<h3 id="3-3对齐填充"><a href="#3-3对齐填充" class="headerlink" title="3.3对齐填充"></a>3.3对齐填充</h3><p>JVM自动内存管理机制要求对象大小必须是8字节的整数倍，而对象头正好是8字节的整数倍，所以实例数据也必须是8字节整数倍，如果不是，就要对齐填充。</p>
+<h2 id="4-对象的访问方式"><a href="#4-对象的访问方式" class="headerlink" title="4.对象的访问方式"></a>4.对象的访问方式</h2><p>两种主流访问方式：句柄和直接指针。</p>
+<p><img src="/句柄访问对象.jpg" alt="句柄访问对象"></p>
+<p><img src="/直接指针访问对象.jpg" alt="直接指针访问对象"></p>
+<p>句柄访问最大优势就是reference中存储的是稳定的句柄地址，当对象移动时只需改变句柄中的实例数据指针，而reference本身不需要修改；</p>
+<p>直接指针访问最大优势就是节省了一次指针定位的时间开销。</p>
 
           
         
@@ -1178,7 +1642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1200,7 +1664,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1253,7 +1717,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.7k字</span>
+  <span class="post-count">博客全站共12.2k字</span>
 </div>
 
 
