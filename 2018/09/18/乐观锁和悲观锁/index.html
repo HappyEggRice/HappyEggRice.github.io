@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Happy Egg">
 <meta property="og:description" content="乐观锁：概念：乐观锁是指操作数据库时(更新操作)，想法很乐观，认为每次的操作不会导致冲突，所以操作数据时不加锁，操作完成后，再判断是否有冲突。 实现：主要有版本号机制或CAS操作两种。 ​    1.版本号机制：前提是操作的数据库表有version字段，每次更新操作，都会将version字段值加1。一次完整的更新操作分为两步：（以更新状态为例） s1.查出更新行信息，包含version字段。 se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-18T07:06:53.581Z">
+<meta property="og:updated_time" content="2018-10-19T03:12:39.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="乐观锁和悲观锁">
 <meta name="twitter:description" content="乐观锁：概念：乐观锁是指操作数据库时(更新操作)，想法很乐观，认为每次的操作不会导致冲突，所以操作数据时不加锁，操作完成后，再判断是否有冲突。 实现：主要有版本号机制或CAS操作两种。 ​    1.版本号机制：前提是操作的数据库表有version字段，每次更新操作，都会将version字段值加1。一次完整的更新操作分为两步：（以更新状态为例） s1.查出更新行信息，包含version字段。 se">
@@ -369,6 +369,7 @@
 <p>注：#{version}的值就是第一步查询出来的version值。</p>
 <p>如果在更新期间有其他线程更新了该行，就会导致本次更新失败。</p>
 <p>​    <strong>2.CAS操作</strong>：即compare and swap 或者 compare and set，涉及到三个操作数，数据所在的内存值，预期值，新值。当需要更新时，判断当前内存值与之前取到的值是否相等，若相等，则用新值更新，若失败则重试，一般情况下是一个自旋操作，即不断的重试。</p>
+<a id="more"></a>
 <h2 id="悲观锁："><a href="#悲观锁：" class="headerlink" title="悲观锁："></a>悲观锁：</h2><p><strong>概念</strong>：悲观锁是指操作数据库时(更新操作)，想法很悲观，认为每次的操作都会导致冲突，所以操作数据时都会加锁。</p>
 <p><strong>实现</strong>：共享锁和排它锁</p>
 <p>​    <strong>1.共享锁【S锁】</strong>：又称读锁，若事务T对数据对象A加上S锁，则事务T可以读A但不能修改A，其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改。</p>
@@ -533,7 +534,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -544,7 +545,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -555,7 +556,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -624,7 +625,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.2k字</span>
+  <span class="post-count">博客全站共14.2k字</span>
 </div>
 
 
@@ -633,7 +634,7 @@ var jiathis_config={
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

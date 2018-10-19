@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Happy Egg">
 <meta property="og:description" content="1.魔数和Class文件版本每个class文件前四个字节称为魔数，就是用来确定该文件是否能被虚拟机所接受的class文件。 第5和第6个字节表示次版本号，第7和第8字节表示主版本号。 2.常量池紧接着主次版本号之后的就是常量池入口，可理解为class文件的资源库。主要用来存放两类常量：字面量和符号引用。字面量比较接近java语言层面的常量概念，如文本字符串、final修饰的常量等。而符号引用属于编">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-21T06:37:25.263Z">
+<meta property="og:updated_time" content="2018-10-19T03:12:50.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类文件结构">
 <meta name="twitter:description" content="1.魔数和Class文件版本每个class文件前四个字节称为魔数，就是用来确定该文件是否能被虚拟机所接受的class文件。 第5和第6个字节表示次版本号，第7和第8字节表示主版本号。 2.常量池紧接着主次版本号之后的就是常量池入口，可理解为class文件的资源库。主要用来存放两类常量：字面量和符号引用。字面量比较接近java语言层面的常量概念，如文本字符串、final修饰的常量等。而符号引用属于编">
@@ -364,6 +364,7 @@
 <h2 id="2-常量池"><a href="#2-常量池" class="headerlink" title="2.常量池"></a>2.常量池</h2><p>紧接着主次版本号之后的就是常量池入口，可理解为class文件的资源库。主要用来存放两类常量：字面量和符号引用。字面量比较接近java语言层面的常量概念，如文本字符串、final修饰的常量等。而符号引用属于编译原理方面的概念，主要包括三类常量：类和接口的全限定名、字段的名称和描述符、方法的名称和描述符。</p>
 <h2 id="3-访问标志"><a href="#3-访问标志" class="headerlink" title="3.访问标志"></a>3.访问标志</h2><p>常量池之后的两个字节代表访问标志，用于识别一些类或接口层次的访问信息，包括：这个Class是类还是接口；是否定义为public类型；是否定义为abstract类型；如果是类，有没有被final修饰等。</p>
 <h2 id="4-类索引、父类索引和接口索引集合"><a href="#4-类索引、父类索引和接口索引集合" class="headerlink" title="4.类索引、父类索引和接口索引集合"></a>4.类索引、父类索引和接口索引集合</h2><p>访问标志之后就是类索引、父类索引和接口索引集合。类索引用于确定这个类的全限定名，父类索引用于确定这个类的父类的全限定名，接口索引集合用于描述这个类实现哪些接口。</p>
+<a id="more"></a>
 <h2 id="5-字段表集合"><a href="#5-字段表集合" class="headerlink" title="5.字段表集合"></a>5.字段表集合</h2><p>描述接口或类中声明的变量。</p>
 <h2 id="6-方法表集合"><a href="#6-方法表集合" class="headerlink" title="6.方法表集合"></a>6.方法表集合</h2><p>描述接口或类中声明的方法。</p>
 <h2 id="7-属性表集合"><a href="#7-属性表集合" class="headerlink" title="7.属性表集合"></a>7.属性表集合</h2><p>描述某些场景专有的信息。</p>
@@ -525,7 +526,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -536,7 +537,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -547,7 +548,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -616,7 +617,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.2k字</span>
+  <span class="post-count">博客全站共14.2k字</span>
 </div>
 
 
@@ -625,7 +626,7 @@ var jiathis_config={
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

@@ -79,19 +79,20 @@
 
 
 
-<meta name="description" content="1.类的生命周期">
+<meta name="description" content="1.类的生命周期 1.1加载1）通过一个类的全限定名来获取定义此类的二进制字节流。 2）将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3）在内存中生成代表这个类的Class对象，作为方法区这个类的各种数据的访问入口。 1.2连接一般加载阶段与连接阶段的部分内容是交叉进行的，连接过程可分为：验证、准备、解析。 验证：验证字节流是否符合Class文件格式的规范，继承是否合理，语义是否">
 <meta name="keywords" content="类加载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虚拟机类加载机制">
 <meta property="og:url" content="http://yoursite.com/2018/09/21/虚拟机类加载机制/index.html">
 <meta property="og:site_name" content="Happy Egg">
-<meta property="og:description" content="1.类的生命周期">
+<meta property="og:description" content="1.类的生命周期 1.1加载1）通过一个类的全限定名来获取定义此类的二进制字节流。 2）将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3）在内存中生成代表这个类的Class对象，作为方法区这个类的各种数据的访问入口。 1.2连接一般加载阶段与连接阶段的部分内容是交叉进行的，连接过程可分为：验证、准备、解析。 验证：验证字节流是否符合Class文件格式的规范，继承是否合理，语义是否">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/类的生命周期.jpg">
-<meta property="og:updated_time" content="2018-09-21T07:51:51.319Z">
+<meta property="og:image" content="http://yoursite.com/img/双亲委派模型.png">
+<meta property="og:updated_time" content="2018-10-19T03:09:33.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟机类加载机制">
-<meta name="twitter:description" content="1.类的生命周期">
+<meta name="twitter:description" content="1.类的生命周期 1.1加载1）通过一个类的全限定名来获取定义此类的二进制字节流。 2）将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。 3）在内存中生成代表这个类的Class对象，作为方法区这个类的各种数据的访问入口。 1.2连接一般加载阶段与连接阶段的部分内容是交叉进行的，连接过程可分为：验证、准备、解析。 验证：验证字节流是否符合Class文件格式的规范，继承是否合理，语义是否">
 <meta name="twitter:image" content="http://yoursite.com/img/类的生命周期.jpg">
 
 
@@ -362,6 +363,19 @@
 
       
         <h2 id="1-类的生命周期"><a href="#1-类的生命周期" class="headerlink" title="1.类的生命周期"></a>1.类的生命周期</h2><p><img src="/img/类的生命周期.jpg" alt="类的生命周期"></p>
+<h3 id="1-1加载"><a href="#1-1加载" class="headerlink" title="1.1加载"></a>1.1加载</h3><p>1）通过一个类的全限定名来获取定义此类的二进制字节流。</p>
+<p>2）将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。</p>
+<p>3）在内存中生成代表这个类的Class对象，作为方法区这个类的各种数据的访问入口。</p>
+<h3 id="1-2连接"><a href="#1-2连接" class="headerlink" title="1.2连接"></a>1.2连接</h3><p>一般加载阶段与连接阶段的部分内容是交叉进行的，连接过程可分为：验证、准备、解析。</p>
+<p>验证：验证字节流是否符合Class文件格式的规范，继承是否合理，语义是否合法，解析动作能否正常执行等，总之，就是保证JVM能够执行。</p>
+<p>准备：为类变量分配内存并设置类变量初始值。初始值一般为零值，除非有final修饰的类变量，如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> value = <span class="number">123</span>;</span><br></pre></td></tr></table></figure>
+<p>此时value在准备阶段会被设为123。</p>
+<p>解析：将常量池中的符号引用替换为直接引用。说白了就是JVM会将所有的类或接口名、字段名、方法名转换为具体的内存地址。</p>
+<a id="more"></a>
+<h3 id="1-3初始化"><a href="#1-3初始化" class="headerlink" title="1.3初始化"></a>1.3初始化</h3><p>这个阶段执行类构造器&lt;clinit&gt;方法的过程，即执行所有类变量的赋值动作和静态代码块中的语句。</p>
+<h2 id="2-类加载器"><a href="#2-类加载器" class="headerlink" title="2.类加载器"></a>2.类加载器</h2><p>双亲委派模型：如果一个类加载器收到了类加载请求，它并不会自己先去加载，而是把这个请求委托给父类的加载器去执行，如果父类加载器还存在其父类加载器，则进一步向上委托，依次递归，请求最终将到达顶层的启动类加载器，如果父类加载器可以完成类加载任务，就成功返回，倘若父类加载器无法完成此加载任务，子加载器才会尝试自己去加载。</p>
+<p><img src="/img/双亲委派模型.png" alt="双亲委派模型"></p>
 
       
     </div>
@@ -410,6 +424,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/16/java排序算法/" rel="prev" title="java排序算法">
+                java排序算法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -516,7 +534,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -527,7 +545,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -538,7 +556,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -571,7 +589,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-类的生命周期"><span class="nav-number">1.</span> <span class="nav-text">1.类的生命周期</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-类的生命周期"><span class="nav-number">1.</span> <span class="nav-text">1.类的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1加载"><span class="nav-number">1.1.</span> <span class="nav-text">1.1加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2连接"><span class="nav-number">1.2.</span> <span class="nav-text">1.2连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3初始化"><span class="nav-number">1.3.</span> <span class="nav-text">1.3初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-类加载器"><span class="nav-number">2.</span> <span class="nav-text">2.类加载器</span></a></li></ol></div>
             
 
           </div>
@@ -607,7 +625,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.2k字</span>
+  <span class="post-count">博客全站共14.2k字</span>
 </div>
 
 
@@ -616,7 +634,7 @@ var jiathis_config={
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">

@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/标记清除.jpg">
 <meta property="og:image" content="http://yoursite.com/复制.jpg">
 <meta property="og:image" content="http://yoursite.com/标记整理.jpg">
-<meta property="og:updated_time" content="2018-09-21T01:02:14.609Z">
+<meta property="og:updated_time" content="2018-10-19T03:12:29.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="垃圾收集">
 <meta name="twitter:description" content="1.概述垃圾收集针对的就是java堆和方法区。程序计数器、栈的内存分配和回收都具备确定性的，内存随着方法结束或线程结束而回收，就不用再考虑回收的问题了。而java堆和方法区不一样，例如一个接口的多个实现类需要的内存可能不一样，也就是说我们只有在程序运行时才知道创建哪些对象，所以这部分内存分配和回收都是动态不确定的，就需要我们去考虑回收的问题。 2.判断对象是否存活主要有两种方式：引用计数法和可达性">
@@ -368,6 +368,7 @@
 <h3 id="2-1引用计算法"><a href="#2-1引用计算法" class="headerlink" title="2.1引用计算法"></a>2.1引用计算法</h3><p>原理：给对象中添加一个引用计数器，每当一个地方引用它，计数器就加1；有一个引用失效，就减1；任何时刻只要计数器值为0就判定对象死亡。</p>
 <p>弊端：解决不了对象间相互循环引用的问题。</p>
 <h3 id="2-1可达性分析算法"><a href="#2-1可达性分析算法" class="headerlink" title="2.1可达性分析算法"></a>2.1可达性分析算法</h3><p>原理：通过一系列称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连时，就说明该对象不可用。</p>
+<a id="more"></a>
 <h2 id="3-垃圾收集算法"><a href="#3-垃圾收集算法" class="headerlink" title="3.垃圾收集算法"></a>3.垃圾收集算法</h2><h3 id="3-1标记-清除算法"><a href="#3-1标记-清除算法" class="headerlink" title="3.1标记-清除算法"></a>3.1标记-清除算法</h3><p>原理：先标记，再清除。</p>
 <p>不足：一个是效率问题，标记和清除的效率都很低；一个是空间问题，内存零散化严重。</p>
 <p><img src="/标记清除.jpg" alt="标记清除"></p>
@@ -538,7 +539,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -549,7 +550,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -560,7 +561,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -629,7 +630,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.2k字</span>
+  <span class="post-count">博客全站共14.2k字</span>
 </div>
 
 
@@ -638,7 +639,7 @@ var jiathis_config={
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">
