@@ -45,32 +45,6 @@
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
 
 
 
@@ -382,8 +356,7 @@
 
       
         
-          <p><img src="/img/排序算法.jpg" alt="排序算法"></p>
-<h2 id="一、直接选择排序"><a href="#一、直接选择排序" class="headerlink" title="一、直接选择排序"></a>一、直接选择排序</h2><p><strong>思路</strong>：第一次从R[0]~R[n-1]中选取最小值，与R[0]交换，第二次从R[1]~R[n-1]中选取最小值，与R[1]交换，….，第i次从R[i-1]~R[n-1]中选取最小值，与R[i-1]交换，…..，第n-1次从R[n-2]~R[n-1]中选取最小值，与R[n-2]交换，总共通过n-1次，得到一个按排序码从小到大排列的有序序列。</p>
+          <h2 id="一、直接选择排序"><a href="#一、直接选择排序" class="headerlink" title="一、直接选择排序"></a>一、直接选择排序</h2><p><strong>思路</strong>：第一次从R[0]~R[n-1]中选取最小值，与R[0]交换，第二次从R[1]~R[n-1]中选取最小值，与R[1]交换，….，第i次从R[i-1]~R[n-1]中选取最小值，与R[i-1]交换，…..，第n-1次从R[n-2]~R[n-1]中选取最小值，与R[n-2]交换，总共通过n-1次，得到一个按排序码从小到大排列的有序序列。</p>
 <p>代码实现如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(array == <span class="keyword">null</span> || array.length &lt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> len = array.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;len-<span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = i+<span class="number">1</span>; j&lt;len; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(array[i]&gt;array[j])&#123;					</span><br><span class="line">                <span class="keyword">int</span> temp = array[i];</span><br><span class="line">                array[i] = array[j];</span><br><span class="line">                array[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -994,9 +967,10 @@
 
       
         
-          <h2 id="1-JVM运行时数据区域"><a href="#1-JVM运行时数据区域" class="headerlink" title="1.JVM运行时数据区域"></a>1.JVM运行时数据区域</h2><p><img src="/JVM运行时数据区域.png" alt="JVM运行时数据区域"></p>
-<h3 id="1-1程序计数器"><a href="#1-1程序计数器" class="headerlink" title="1.1程序计数器"></a>1.1程序计数器</h3><p>程序计数器可看作当前线程所执行的字节码的行号指示器，其实就是告诉JVM执行到字节码文件哪一行了。多线程环境中，每次线程切换后都能恢复到正确的执行位置，靠的就是这个计数器，这也解释了为什么程序计数器必须是线程私有的。另外，它也是唯一一个不会发生内存溢出异常的区域。</p>
+          <h2 id="1-JVM运行时数据区域"><a href="#1-JVM运行时数据区域" class="headerlink" title="1.JVM运行时数据区域"></a>1.JVM运行时数据区域</h2><h3 id="1-1程序计数器"><a href="#1-1程序计数器" class="headerlink" title="1.1程序计数器"></a>1.1程序计数器</h3><p>程序计数器可看作当前线程所执行的字节码的行号指示器，其实就是告诉JVM执行到字节码文件哪一行了。多线程环境中，每次线程切换后都能恢复到正确的执行位置，靠的就是这个计数器，这也解释了为什么程序计数器必须是线程私有的。另外，它也是唯一一个不会发生内存溢出异常的区域。</p>
 <h3 id="1-2虚拟机栈"><a href="#1-2虚拟机栈" class="headerlink" title="1.2虚拟机栈"></a>1.2虚拟机栈</h3><p>就是为JVM执行java方法服务的。一个java方法执行的同时会创建一个栈帧用于保存局部变量表、操作数栈、动态链接、方法出口等信息。一个java方法从调用到执行结束，就对应着一个栈帧在虚拟机栈中入栈到出栈的过程。另外，如果线程请求的栈深度大于JVM所允许的深度，就会报StackOverFlowError；如果JVM可以动态扩展，但扩展时却申请不到足够的内存，就会报OutOfMemoryError。</p>
+<h3 id="1-3本地方法栈"><a href="#1-3本地方法栈" class="headerlink" title="1.3本地方法栈"></a>1.3本地方法栈</h3><p>同虚拟机栈，区别就是本地方法栈为JVM执行native方法服务的。</p>
+<h3 id="1-4堆"><a href="#1-4堆" class="headerlink" title="1.4堆"></a>1.4堆</h3><p>就是用来存放对象实例的。java堆可以处于物理上不连续的内存空间，只要逻辑连续即可。另外，如果堆内存不足以完成实例分配，且无法扩展，就会报OutOfMemoryError。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/19/JVM自动内存管理机制/#more" rel="contents">
@@ -1602,7 +1576,7 @@
       
         
           <h2 id="Redis-version-Redis-x64-3-2-100"><a href="#Redis-version-Redis-x64-3-2-100" class="headerlink" title="Redis(version : Redis-x64-3.2.100)"></a>Redis(version : Redis-x64-3.2.100)</h2><h3 id="1-cmd启动redis"><a href="#1-cmd启动redis" class="headerlink" title="1.cmd启动redis"></a>1.cmd启动redis</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server<span class="selector-class">.exe</span> redis<span class="selector-class">.windows</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure>
-<p><img src="/图片1.png" alt=""></p>
+<p><img src="/img/图片1.png" alt=""></p>
 <h2 id="Nginx-version-nginx-1-12-2"><a href="#Nginx-version-nginx-1-12-2" class="headerlink" title="Nginx(version : nginx-1.12.2)"></a>Nginx(version : nginx-1.12.2)</h2><h3 id="1-cmd启动nginx"><a href="#1-cmd启动nginx" class="headerlink" title="1.cmd启动nginx"></a>1.cmd启动nginx</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">start</span> nginx或者nginx.exe</span><br></pre></td></tr></table></figure>
 <h3 id="2-cmd关闭nginx"><a href="#2-cmd关闭nginx" class="headerlink" title="2.cmd关闭nginx"></a>2.cmd关闭nginx</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx<span class="selector-class">.exe</span> -s quit或者nginx<span class="selector-class">.exe</span> -s stop</span><br></pre></td></tr></table></figure>
           <!--noindex-->
